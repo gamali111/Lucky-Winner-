@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
+<script type='text/javascript' src='//pl27207242.profitableratecpm.com/f2/ec/84/f2ec843a6104fe19879324841f7a1726.js'></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin & Win a Guaranteed Prize!</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-color: #ff00e0;
-            --secondary-color: #00f2ff;
-            --dark-color: #1a012e;
-            --light-color: #ffffff;
-            --glow-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
-            --glow-shadow-hover: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color), 0 0 45px var(--secondary-color);
+            --bg-color: #1a023a;
+            --primary-color: #ff00e6;
+            --secondary-color: #ffc400;
+            --glow-color: rgba(255, 0, 230, 0.7);
+            --text-color: #ffffff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -25,8 +26,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f001e, #1a012e);
-            color: var(--light-color);
+            background: linear-gradient(135deg, var(--bg-color), #000000);
+            color: var(--text-color);
             text-align: center;
             padding: 20px;
             overflow-x: hidden;
@@ -34,271 +35,276 @@
         .container {
             width: 100%;
             max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
         .header h1 {
             font-size: 2rem;
             font-weight: 700;
-            text-shadow: var(--glow-shadow);
-            animation: pulse-text 2s infinite;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
         }
         .wheel-container {
             position: relative;
             width: 100%;
             max-width: 350px;
+            margin: 30px auto;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        #spin-wheel-img {
+        #spin-wheel {
             width: 100%;
             transition: transform 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        .wheel-container::after {
-            content: '▼';
-            font-size: 3rem;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px var(--primary-color);
+        #spin-btn-image {
             position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
             z-index: 10;
+            transition: transform 0.2s ease;
         }
-        .center-button {
-            position: absolute;
-            width: 25%;
-            height: auto;
-            z-index: 2;
-            pointer-events: none;
-        }
-        .action-button {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: var(--light-color);
-            border: none;
-            border-radius: 50px;
-            padding: 15px 30px;
+        #spin-btn-image:hover { transform: scale(1.1); }
+        .spin-button-container { margin-top: 20px; }
+        .btn {
+            font-family: 'Poppins', sans-serif;
             font-size: 1.2rem;
             font-weight: 600;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
             cursor: pointer;
-            box-shadow: var(--glow-shadow);
+            color: var(--text-color);
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 0 15px var(--glow-color), 0 0 25px var(--glow-color);
             transition: all 0.3s ease;
-            animation: pulse-button 2s infinite;
-            text-decoration: none;
             display: inline-block;
-        }
-        .action-button:hover {
-            transform: scale(1.05);
-            box-shadow: var(--glow-shadow-hover);
-            animation-play-state: paused;
-        }
-        .action-button:active { transform: scale(0.95); }
-        .action-button:disabled {
-            cursor: not-allowed;
-            background: #555;
-            box-shadow: none;
-            animation: none;
-        }
-        .modal {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            background: rgba(26, 1, 46, 0.9);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid var(--primary-color);
-            box-shadow: var(--glow-shadow);
+            text-decoration: none;
             width: 100%;
-            animation: fadeIn 0.5s ease;
+            animation: glow-animation 2s infinite ease-in-out;
         }
-        .modal h2 {
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px var(--glow-color), 0 0 40px var(--glow-color);
+        }
+        .btn.whatsapp-btn {
+            background: linear-gradient(145deg, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: none;
+            margin-bottom: 15px;
+        }
+        @keyframes glow-animation {
+            0%, 100% { box-shadow: 0 0 15px var(--glow-color); }
+            50% { box-shadow: 0 0 30px var(--glow-color); }
+        }
+        .claim-prize-section, .final-message { margin-top: 30px; display: none; }
+        .claim-prize-section h2, .final-message h2 {
+            font-size: 1.8rem;
             color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-bottom: 0;
-        }
-        .modal p {
-            font-size: 1rem;
-            line-height: 1.5;
+            text-shadow: 0 0 10px var(--secondary-color);
             margin-bottom: 10px;
         }
-        #claim-prize-modal h2 { color: #fff; font-size: 1.6rem; }
-        #claim-prize-modal .prize-name {
-            color: var(--secondary-color);
-            text-shadow: 0 0 8px var(--secondary-color);
+        .claim-prize-section p, .final-message p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
-        .claim-form { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+        .claim-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
         .claim-form input {
-            padding: 12px;
+            width: 100%; padding: 15px; border-radius: 10px;
             border: 1px solid var(--secondary-color);
-            background: var(--dark-color);
-            border-radius: 8px;
-            color: var(--light-color);
-            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color); font-size: 1rem;
         }
-        .claim-form input::placeholder { color: #aaa; }
-        .claim-form input:focus {
-            outline: none;
-            box-shadow: 0 0 10px var(--secondary-color);
+        .claim-form input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .form-message {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-top: 10px;
+            min-height: 24px;
+            transition: opacity 0.3s;
         }
-        .form-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
-        @keyframes pulse-text {
-            0%, 100% { text-shadow: var(--glow-shadow); }
-            50% { text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--secondary-color); }
-        }
-        @keyframes pulse-button {
-            0%, 100% { transform: scale(1); box-shadow: var(--glow-shadow); }
-            50% { transform: scale(1.03); box-shadow: var(--glow-shadow-hover); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
         }
         @media (max-width: 480px) {
             .header h1 { font-size: 1.5rem; }
-            .action-button { font-size: 1rem; padding: 12px 25px; }
-            .modal h2 { font-size: 1.3rem; }
+            .btn { font-size: 1rem; padding: 12px 30px; }
+            .claim-prize-section h2, .final-message h2 { font-size: 1.5rem; }
+            .claim-prize-section p, .final-message p { font-size: 1rem; }
         }
-        /* Autofill fix for Chrome & Safari */
-        input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0px 1000px var(--dark-color) inset;
-            -webkit-text-fill-color: var(--light-color) !important;
+        #confetti-canvas {
+            position: fixed; top: 0; left: 0; width: 100%;
+            height: 100%; z-index: 1000; pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <canvas id="confetti-canvas"></canvas>
+
+    <main class="container">
         <header class="header">
             <h1>Spin the Wheel & Win a Guaranteed Prize!</h1>
         </header>
+
         <div class="wheel-container">
-            <img id="spin-wheel-img" src="spin.png" alt="Prize Wheel">
-            <img src="button.png" class="center-button" alt="Static Center Button">
+            <img src="spin.png" id="spin-wheel" alt="Spin Wheel">
+            <img src="button.png" id="spin-btn-image" alt="Spin Button">
         </div>
-        <button id="spin-button" class="action-button">SPIN NOW</button>
-        <div id="claim-prize-modal" class="modal">
-            <h2>Congratulations! You won<br><span id="win-prize-name" class="prize-name"></span></h2>
-            <p>To claim this prize, fill your details and share with your 10 friends.</p>
-            <form id="claim-form" class="claim-form">
-                <input type="text" id="user-name" placeholder="Enter Your Name" required>
-                <input type="tel" id="user-mobile" placeholder="Enter Your Mobile Number" required>
-                <div class="form-buttons">
-                    <a id="whatsapp-share-btn" href="#" class="action-button" target="_blank">Share on WhatsApp</a>
-                    <button type="submit" class="action-button">Submit Claim</button>
-                </div>
+        
+        <div class="spin-button-container" id="spin-button-container">
+            <button class="btn" id="spin-now-btn">SPIN NOW</button>
+        </div>
+
+        <section class="claim-prize-section" id="claim-prize-section">
+            <h2 id="prize-won-heading"></h2>
+            <p>To claim your prize, complete the steps below.</p>
+            
+            <form class="claim-form" id="claim-form">
+                <input type="text" id="user-name" placeholder="Step 1: Enter Your Full Name" required>
+                <input type="tel" id="user-mobile" placeholder="Step 2: Enter Your Mobile Number" required>
+                
+                <a href="#" class="btn whatsapp-btn" id="whatsapp-share-btn" target="_blank">Step 3: Share with 10 Friends</a>
+                <button type="submit" class="btn" id="submit-btn">Step 4: SUBMIT & CLAIM PRIZE</button>
+
+                <p class="form-message" id="form-message"></p>
             </form>
-        </div>
-        <div id="success-modal" class="modal">
+        </section>
+
+        <section class="final-message" id="final-message">
             <h2>Your prize claim has been submitted successfully!</h2>
             <p>Congratulations again! You will be contacted soon.</p>
-        </div>
-    </div>
+        </section>
+        
+        <footer class="footer">
+            <p>(*Prizes shown are for entertainment purposes only*)</p>
+        </footer>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const spinButton = document.getElementById('spin-button');
-            const wheelImg = document.getElementById('spin-wheel-img');
-            const claimPrizeModal = document.getElementById('claim-prize-modal');
-            const winPrizeName = document.getElementById('win-prize-name');
+            const wheel = document.getElementById('spin-wheel');
+            const spinBtnImage = document.getElementById('spin-btn-image');
+            const spinNowBtn = document.getElementById('spin-now-btn');
+            const spinButtonContainer = document.getElementById('spin-button-container');
+            const claimPrizeSection = document.getElementById('claim-prize-section');
+            const prizeWonHeading = document.getElementById('prize-won-heading');
             const claimForm = document.getElementById('claim-form');
-            const whatsappShareBtn = document.getElementById('whatsapp-share-btn');
-            const successModal = document.getElementById('success-modal');
+            const finalMessage = document.getElementById('final-message');
+            const confettiCanvas = document.getElementById('confetti-canvas');
+            const myConfetti = confetti.create(confettiCanvas, { resize: true, useWorker: true });
 
-            const prizeSegments = [
-                { name: "₹100 PayTM Cash", degrees: { min: 1, max: 30 }},
-                { name: "Movie Ticket", degrees: { min: 31, max: 60 }},
-                { name: "iPhone 14", degrees: { min: 61, max: 90 }},
-                { name: "Samsung TV", degrees: { min: 91, max: 120 }},
-                { name: "Smartwatch", degrees: { min: 121, max: 150 }},
-                { name: "Bluetooth Speaker", degrees: { min: 151, max: 180 }},
-                { name: "AirPods", degrees: { min: 181, max: 210 }},
-                { name: "Better Luck Next Time", degrees: { min: 211, max: 240 }},
-                { name: "Amazon Voucher ₹50", degrees: { min: 241, max: 270 }},
-                { name: "Free Coffee Coupon", degrees: { min: 271, max: 300 }},
-                { name: "20% Discount Voucher", degrees: { min: 301, max: 330 }},
-                { name: "Surprise Gift Box", degrees: { min: 331, max: 360 }},
+            const userNameInput = document.getElementById('user-name');
+            const userMobileInput = document.getElementById('user-mobile');
+            const whatsappShareBtn = document.getElementById('whatsapp-share-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+
+            let isSpinning = false;
+            let detailsFilled = false;
+            let hasShared = false;
+            let winningPrize = '';
+
+            const prizes = [
+                "₹100 PayTM Cash", "Movie Ticket", "iPhone 14", "Samsung TV", "Smartwatch", 
+                "Bluetooth Speaker", "AirPods", "Better Luck Next Time", "Amazon Voucher ₹50", 
+                "Free Coffee Coupon", "20% Discount Voucher", "Surprise Gift Box"
             ];
 
-            const winnablePrizes = prizeSegments.filter(prize => prize.name !== "Better Luck Next Time");
-            
-            let isSpinning = false;
-            let determinedPrize = null;
-            let hasClickedShare = false;
-
-            spinButton.addEventListener('click', () => {
+            function startSpin() {
                 if (isSpinning) return;
                 isSpinning = true;
-                spinButton.disabled = true;
-                spinButton.style.animationPlayState = 'paused';
-                hasClickedShare = false;
+                spinButtonContainer.style.display = 'none';
+                const winningPrizes = prizes.filter(p => p !== "Better Luck Next Time");
+                winningPrize = winningPrizes[Math.floor(Math.random() * winningPrizes.length)];
+                const prizeIndexOnWheel = prizes.indexOf(winningPrize);
+                const degreesPerSegment = 360 / prizes.length;
+                const randomOffset = (Math.random() * (degreesPerSegment - 10)) + 5;
+                const targetRotation = (5 * 360) + (360 - (prizeIndexOnWheel * degreesPerSegment)) - randomOffset;
+                wheel.style.transform = `rotate(${targetRotation}deg)`;
+                setTimeout(() => {
+                    isSpinning = false;
+                    triggerConfetti();
+                    prizeWonHeading.textContent = `Congratulations! You've Won ${winningPrize}!`;
+                    claimPrizeSection.style.display = 'block';
+                    formMessage.textContent = "Please fill your details to proceed.";
+                }, 6500);
+            }
 
-                const winningPrizeIndex = Math.floor(Math.random() * winnablePrizes.length);
-                determinedPrize = winnablePrizes[winningPrizeIndex];
-
-                const baseRotations = 5 * 360;
-                const prizeAngleRange = determinedPrize.degrees.max - determinedPrize.degrees.min;
-                const randomOffset = Math.floor(Math.random() * prizeAngleRange);
-                const prizeAngle = determinedPrize.degrees.min + randomOffset;
-                
-                const finalRotation = baseRotations + prizeAngle;
-
-                wheelImg.style.transform = `rotate(${finalRotation}deg)`;
-            });
-
-            wheelImg.addEventListener('transitionend', () => {
-                if (!isSpinning || !determinedPrize) return;
-
-                confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
-
-                winPrizeName.textContent = determinedPrize.name;
-                claimPrizeModal.style.display = 'flex';
-            }, { once: true });
-
+            function checkDetails() {
+                if (userNameInput.value.trim() !== '' && userMobileInput.value.trim() !== '') {
+                    detailsFilled = true;
+                    if (!hasShared) formMessage.textContent = "Great! Now please share with your friends.";
+                } else {
+                    detailsFilled = false;
+                }
+            }
+            
             whatsappShareBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const userName = document.getElementById('user-name').value.trim();
-                
-                if (userName === '') {
-                    alert('Please enter your name before sharing.');
+                if (!detailsFilled) {
+                    formMessage.textContent = "First fill up your Name and Mobile Number to share.";
                     return;
                 }
+                hasShared = true;
+                formMessage.textContent = "Thank you for sharing! Now you can submit your claim.";
+                
+                // --- NEW DYNAMIC WHATSAPP MESSAGE ---
+                const userName = userNameInput.value.trim();
+                const prizeName = winningPrize;
 
-                const shareText = `🎉 Hey! I just won *${determinedPrize.name}* on Spin & Win! 🏆
-Name: ${userName}
-Want to try your luck? Click here: https://yourapplink.com`;
+                const line1 = `OMG! 🎉 ${userName} here, and I just won a *${prizeName}* from this spin wheel game! 💥`;
+                const line2 = `No joke — it's 100% real and free to play.`;
+                const line3 = `Try your luck now — you’re guaranteed to win something! 🎁👇`;
+                const disclaimer = `\n\n(*Prizes shown are for entertainment purposes only*)`;
 
-                const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-                window.open(whatsappURL, '_blank');
-                hasClickedShare = true;
+                const finalMessage = `${line1}\n\n${line2}\n${line3}`;
+                const shareURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(finalMessage + "\n\n" + window.location.href + disclaimer)}`;
+                
+                window.open(shareURL, '_blank');
             });
-
+            
             claimForm.addEventListener('submit', (e) => {
-                e.preventDefault(); 
-                
-                const userName = document.getElementById('user-name').value;
-                const userMobile = document.getElementById('user-mobile').value;
-                
-                if (userName.trim() === '' || userMobile.trim() === '') {
-                    alert('Please fill in all fields.');
+                e.preventDefault();
+                if (!detailsFilled) {
+                    formMessage.textContent = "Please fill in your details before claiming.";
                     return;
                 }
-                
-                if (!hasClickedShare) {
-                    alert('Please share with your friends first to claim the prize.');
+                if (!hasShared) {
+                    formMessage.textContent = "Please share with your friends to complete the claim.";
                     return;
                 }
-                
-                claimPrizeModal.style.display = 'none';
-                successModal.style.display = 'flex';
-                
-                isSpinning = false;
-                determinedPrize = null;
+                claimPrizeSection.style.display = 'none';
+                finalMessage.style.display = 'block';
             });
+
+            spinBtnImage.addEventListener('click', startSpin);
+            spinNowBtn.addEventListener('click', startSpin);
+            userNameInput.addEventListener('input', checkDetails);
+            userMobileInput.addEventListener('input', checkDetails);
+
+            function triggerConfetti() {
+                const duration = 5 * 1000, animationEnd = Date.now() + duration;
+                const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+                const interval = setInterval(() => {
+                    const timeLeft = animationEnd - Date.now();
+                    if (timeLeft <= 0) return clearInterval(interval);
+                    const particleCount = 50 * (timeLeft / duration);
+                    myConfetti({ ...defaults, particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+                }, 250);
+            }
         });
     </script>
-</body>
+
+</body><script type='text/javascript' src='//pl27206114.profitableratecpm.com/be/2c/76/be2c7624dd60281fa0155c13934a6d6d.js'></script>
 </html>
